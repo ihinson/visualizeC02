@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import code
 
-co2 = pd.read_csv('./climate-change.csv')
-co2world = co2[co2['Entity']=='World']
+ggGas = pd.read_csv('./climate-change.csv')
+co2world = ggGas[ggGas['Entity']=='World']
 
 co2world.plot(y="CO2 concentrations", 
               x='Year', 
@@ -22,4 +22,22 @@ plt.title("CO2 Concentrations")
 
 plt.show()
 
-plt.savefig('images/co2world.png')
+#TODO: if file already exists, don't make 
+#plt.savefig('images/co2world.png')
+
+#create NH4 time graph for north america
+ggGasNA = ggGas[ggGas['Entity']=='North America']
+
+ggGasNA.plot(y="CH4 concentrations", 
+              x='Year', 
+              grid = False, 
+              figsize=(20,10))
+
+plt.ylabel("Methane Constrations (parts per million)")
+plt.xlabel("years before today (0 = 1950)")
+plt.legend("")
+plt.title("North American NH4 Concentrations")
+
+plt.show()
+
+plt.savefig('images/nh4northAmerica.png')
